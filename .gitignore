@@ -102,3 +102,33 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+
+# MY PART
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# vs Code setting
+.vscode/
+
+# Test code
+test*
+
+# ignore all logs
+*.log
+log/
+logs/
+
+# compile files
+*.pyc
+__pycache__/
+
+# Models
+models/*
