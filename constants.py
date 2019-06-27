@@ -19,3 +19,5 @@ MIN_EPSILON = 0.001
 #  Stats settings
 AGGREGATE_STATS_EVERY = 50  # episodes
 SHOW_PREVIEW = False
+
+#LOAD_MODEL=""
