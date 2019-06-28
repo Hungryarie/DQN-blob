@@ -6,7 +6,7 @@ and split from one large file into multiple files:<br>
 Is the original file from sentdex.
 </p>
 
-<p>**agent.pyy**:<br>
+<p>**agent.py**:<br>
 class which operates on the game and does the training
 </p>
 
@@ -14,7 +14,7 @@ class which operates on the game and does the training
 Removed the model from the agent class into a seperate one. Created two instances of the model. .model and .target_model
 </p>
 
-<p>**game.pyy**:<br>
+<p>**game.py**:<br>
 class of the blobgame itself
 </p>
 
