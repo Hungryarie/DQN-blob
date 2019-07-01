@@ -2,6 +2,7 @@ from game import Blob
 import numpy as np
 from PIL import Image
 
+
 class BlobEnv:
     SIZE = 10
     RETURN_IMAGES = True
@@ -32,7 +33,7 @@ class BlobEnv:
         if self.RETURN_IMAGES:
             observation = np.array(self.get_image())
         else:
-            observation = (self.player-self.food) + (self.player-self.enemy)
+            observation = (self.player - self.food) + (self.player - self.enemy)
         return observation
 
     def step(self, action):
@@ -47,7 +48,7 @@ class BlobEnv:
         if self.RETURN_IMAGES:
             new_observation = np.array(self.get_image())
         else:
-            new_observation = (self.player-self.food) + (self.player-self.enemy)
+            new_observation = (self.player - self.food) + (self.player - self.enemy)
 
         if self.player == self.enemy:
             reward = -self.ENEMY_PENALTY
