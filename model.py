@@ -70,3 +70,28 @@ class model_1:
             model.add(Dense(output_num, activation='linear'))  # ACTION_SPACE_SIZE = how many choices (9)
             model.compile(loss="mse", optimizer=Adam(lr=0.001), metrics=['accuracy'])
         return model
+
+
+class model_2:
+    def __init__(self, input_shape, output_num):
+        self.model = self.create_model(input_shape, output_num)
+        self.target_model = self.create_model(input_shape, output_num)
+
+    def create_model(self, input_shape, output_num):
+        # just for testing a quicker model
+        if LOAD_MODEL is not None:
+            print(f"loading model: {LOAD_MODEL}")
+            model = load_model(LOAD_MODEL)
+            print("model loaded")
+        else:
+            model = Sequential()
+
+            model.add(Dense(64, input_shape=input_shape))
+            model.add(Activation('relu'))
+
+            model.add(Flatten())  # this converts our 3D feature maps to 1D feature vectors
+            # model.add(Dense(64))
+
+            model.add(Dense(output_num, activation='linear'))  # ACTION_SPACE_SIZE = how many choices (9)
+            model.compile(loss="mse", optimizer=Adam(lr=0.001), metrics=['accuracy'])
+        return model

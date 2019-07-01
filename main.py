@@ -1,7 +1,7 @@
 
 from env import BlobEnv
 from agent import DQNAgent
-from model import model_1
+from model import model_1, model_2
 from tqdm import tqdm
 from constants import *
 
@@ -29,7 +29,7 @@ tf.set_random_seed(1)
 if not os.path.isdir('models'):
     os.makedirs('models')
 
-Model = model_1(input_shape=(10, 10, 3), output_num=9)
+Model = model_2(input_shape=(10, 10, 3), output_num=9)
 agent = DQNAgent(Model)
 
 
@@ -76,7 +76,7 @@ for episode in tqdm(range(1, EPISODES + 1), ascii=True, unit='episodes'):
     # Append episode reward to a list and log stats (every given number of episodes)
     ep_rewards.append(episode_reward)
     if not episode % AGGREGATE_STATS_EVERY or episode == 1:
-        average_reward = sum(ep_rewards[-AGGREGATE_STATS_EVERY:])/len(ep_rewards[-AGGREGATE_STATS_EVERY:])
+        average_reward = sum(ep_rewards[-AGGREGATE_STATS_EVERY:]) / len(ep_rewards[-AGGREGATE_STATS_EVERY:])
         min_reward = min(ep_rewards[-AGGREGATE_STATS_EVERY:])
         max_reward = max(ep_rewards[-AGGREGATE_STATS_EVERY:])
         agent.tensorboard.update_stats(reward_avg=average_reward, reward_min=min_reward, reward_max=max_reward, epsilon=epsilon)
@@ -89,4 +89,3 @@ for episode in tqdm(range(1, EPISODES + 1), ascii=True, unit='episodes'):
     if epsilon > MIN_EPSILON:
         epsilon *= EPSILON_DECAY
         epsilon = max(MIN_EPSILON, epsilon)
-        
